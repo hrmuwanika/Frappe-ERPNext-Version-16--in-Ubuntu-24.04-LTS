@@ -65,7 +65,9 @@ Installs Python development headers for building extensions
 ## Step 9
 
 ```bash
-sudo apt-get install software-properties-common -y
+sudo apt-get install software-properties-common curl -y
+curl -LsS https://downloads.mariadb.com/MariaDB/mariadb_repo_setup | sudo bash -s -- --mariadb-server-version=mariadb-11.8
+sudo apt update
 sudo apt-get install mariadb-server mariadb-client -y
 
 sudo systemctl start mariadb
