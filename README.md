@@ -15,7 +15,7 @@
 
 ## Step 1
 ```bash
-sudo apt-get update && sudo apt-get upgrade -y
+sudo apt-get update -y && sudo apt-get upgrade -y
 ```
 Updates package list and upgrades all installed system packages
 
@@ -33,7 +33,7 @@ Refreshes the package list after adding a new repository
 
 ## Step 4
 ```bash
-sudo apt install python3.14 python3.14-venv
+sudo apt-get install python3.14 python3.14-venv -y
 ```
 Installs Python 3.14 and its virtual environment module
 
@@ -52,20 +52,27 @@ Installs setuptools and pip for Python package management
 
 ## Step 7
 ```bash
-sudo apt install pkg-config -y
+sudo apt-get install pkg-config -y
 ```
 Installs pkg-config required for compiling native dependencies
 
 ## Step 8
 ```bash
-sudo apt install python3.14-dev -y
+sudo apt-get install python3.14-dev -y
 ```
 Installs Python development headers for building extensions
 
 ## Step 9
+
 ```bash
-sudo apt install mariadb-server -y
+sudo apt-get install software-properties-common -y
+sudo apt-get install mariadb-server mariadb-client -y
+
+sudo systemctl start mariadb
+sudo systemctl enable mariadb
+
 ```
+
 Installs MariaDB database server
 
 ## Step 10
@@ -89,12 +96,14 @@ Restarts the MySQL/MariaDB service to apply changes
 ## Step 13
 ```bash
 sudo apt-get install redis-server -y
+sudo systemctl start redis-server
+sudo systemctl enable redis-server
 ```
 Installs Redis used by Frappe for caching and queues
 
 ## Step 14
 ```bash
-sudo apt install curl
+sudo apt install curl -y
 ```
 Installs curl for downloading scripts and files
 
@@ -136,7 +145,7 @@ Installs dependencies required for PDF generation
 
 ## Step 21
 ```bash
-sudo apt-get install xfonts-75dpi
+sudo apt-get install xfonts-75dpi -y
 ```
 Installs fonts required by wkhtmltopdf
 
@@ -155,6 +164,7 @@ Installs wkhtmltopdf package manually
 ## Step 24
 ```bash
 sudo -H pip3 install frappe-bench --break-system-packages
+sudo -H pip3 install ansible --break-system-packages
 ```
 Installs Frappe Bench CLI tool
 
