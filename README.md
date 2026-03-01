@@ -111,7 +111,7 @@ Installs curl for downloading scripts and files
 
 ## Step 15
 ```bash
-curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
+curl https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
 ```
 Installs NVM (Node Version Manager)
 
@@ -153,13 +153,9 @@ Installs fonts required by wkhtmltopdf
 
 ## Step 22
 ```
-https://wkhtmltopdf.org/downloads.html
-```
-Reference link to download wkhtmltopdf package Download the .deb file for your system based on amd64 or arm64 architecture. Here using arm64 architecture
-
-## Step 23
-```bash
-sudo dpkg -i wkhtmltox_file.deb
+wget https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6.1-3/wkhtmltox_0.12.6.1-3.jammy_amd64.deb
+sudo dpkg -i wkhtmltox_0.12.6.1-3.jammy_amd64.deb
+sudo apt-get install -f       # fix any missing dependencies
 ```
 Installs wkhtmltopdf package manually
 
@@ -190,13 +186,13 @@ Starts Frappe development server
 
 ## Step 28
 ```bash
-bench new-site local.com
+bench new-site dcode.com
 ```
 Creates a new Frappe site
 
 ## Step 29
 ```bash
-bench use local.com
+bench use dcode.com
 ```
 Sets the active site for bench commands
 
@@ -211,3 +207,19 @@ Downloads ERPNext app from GitHub
 bench install-app erpnext
 ```
 Installs ERPNext app on the site
+```bash
+bench get-app hrms --branch version-16
+bench --site dcode.com install-app hrms
+
+bench get-app payments --branch version-16
+bench --site dcode.com install-app payments
+
+bench get-app non_profit --branch version-16
+bench --site dcode.com install-app non_profit
+
+bench get-app https://github.com/erpchampions/uganda_compliance
+bench --site dcode.com install-app uganda_compliance
+
+bench --site dcode.com migrate
+bench start
+```
